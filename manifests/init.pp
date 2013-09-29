@@ -3,9 +3,15 @@
 # Examples
 #
 #  include launchbar
-class launchbar {
-  package { 'LaunchBar':
-    provider => 'appdmg',
-    source   => 'https://yum.cegeka.be/osx_packages/LaunchBar-5.4.2.dmg',
+#  class { 'launchbar':
+#    version => '5.5.2'
+#  }
+#
+class launchbar($version='5.5.2') {
+
+  package { "LaunchBar-${version}":
+    provider => 'appdmg_eula',
+    source   => "http://www.obdev.at/ftp/pub/Products/launchbar/LaunchBar-${version}.dmg",
   }
+
 }
